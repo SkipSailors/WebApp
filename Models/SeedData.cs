@@ -24,8 +24,7 @@
                     new Product() { Name = "Thinking Cap", Price = 16, Category = c3, Supplier = s3 },
                     new Product() { Name = "Unsteady Chair", Price = 29.95m, Category = c3, Supplier = s3 },
                     new Product() { Name = "Human Chess Board", Price = 75, Category = c3, Supplier = s3 },
-                    new Product() { Name = "Bling-Bling Chess King", Price = 1200, Category = c3, Supplier = s3 }
-                );
+                    new Product() { Name = "Bling-Bling Chess King", Price = 1200, Category = c3, Supplier = s3 });
                 context.SaveChanges();
             }
         }
