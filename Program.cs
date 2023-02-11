@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WebApp;
 using WebApp.Models;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ builder.Services.AddDbContext<DataContext>(opts =>
     opts.EnableSensitiveDataLogging(true);
 });
 WebApplication app = builder.Build();
+app.UseMiddleware<TestMiddleware>();
 app.MapGet("/", () => "Hello World!");
 DataContext context = app
     .Services
