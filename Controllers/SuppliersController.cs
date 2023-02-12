@@ -1,5 +1,6 @@
 ﻿namespace WebApp.Controllers;
 
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
@@ -31,5 +32,18 @@ public class SuppliersController : ControllerBase
         }
 
         return supplier;
+    }
+
+    [HttpPatch("{id}")]
+    public async Task<Supplier?> PatchSupplier(long id, JsonPatchDocument<Supplier> patchDoc)
+    {
+        Supplier? s = await context.Suppliers.FindAsync(id);
+        if (s != null)
+        {
+            patchDoc.ApplyTo(s);
+            await context.SaveChangesAsync();
+        }
+
+        return s;
     }
 }
