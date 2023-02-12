@@ -22,7 +22,7 @@ builder.Services.Configure<MvcOptions>(opts =>
 });
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo(){Title = "WbAApp", Version = "v1"});
+    c.SwaggerDoc("v1", new OpenApiInfo(){Title = nameof(WebApp), Version = "v1"});
 });
 WebApplication app = builder.Build();
 app.MapControllers();
@@ -30,7 +30,7 @@ app.MapGet("/", () => "Hello World!");
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
-    options.SwaggerEndpoint("swagger/v1/swagger.json", "WebApp");
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", nameof(WebApp));
 });
 DataContext context = app
     .Services
