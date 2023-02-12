@@ -7,10 +7,11 @@ builder.Services.AddDbContext<DataContext>(opts =>
     opts.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
     opts.EnableSensitiveDataLogging();
 });
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 WebApplication app = builder.Build();
 app.UseStaticFiles();
 app.MapControllers();
+app.MapDefaultControllerRoute();
 DataContext context = app
     .Services
     .CreateScope()
