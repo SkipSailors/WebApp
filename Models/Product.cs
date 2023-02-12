@@ -1,6 +1,7 @@
 namespace WebApp.Models;
 
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 public class Product
 {
@@ -12,5 +13,7 @@ public class Product
     public long CategoryId { get; set; }
     public Category? Category { get; set; }
     public long SupplierId { get; set; }
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public Supplier? Supplier { get; set; }
 }
