@@ -1,27 +1,35 @@
-﻿namespace WebApp.Controllers
+﻿namespace WebApp.Controllers;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Models;
+
+[ApiController]
+[Route("api/[controller]")]
+public class SuppliersController : ControllerBase
 {
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using Models;
+    private readonly DataContext context;
 
-    [ApiController]
-    [Route("api/[controller]")]
-    public class SuppliersController: ControllerBase
+    public SuppliersController(DataContext ctx)
     {
-        private DataContext context;
+        context = ctx;
+    }
 
-        public SuppliersController(DataContext ctx)
+    [HttpGet("{id}")]
+    public async Task<Supplier?> GetSupplier(long id)
+    {
+        Supplier supplier = await context
+            .Suppliers
+            .Include(s => s.Products)
+            .FirstAsync(s => s.SupplierId == id);
+        if (supplier.Products != null)
         {
-            context = ctx;
+            foreach (Product p in supplier.Products)
+            {
+                p.Supplier = null;
+            }
         }
 
-        [HttpGet("{id}")]
-        public async Task<Supplier?> GetSupplier(long id)
-        {
-            return await context
-                .Suppliers
-                .Include(s => s.Products)
-                .FirstAsync(s => s.SupplierId == id);
-        }
+        return supplier;
     }
 }
