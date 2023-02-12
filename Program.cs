@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
 
@@ -8,6 +10,10 @@ builder.Services.AddDbContext<DataContext>(opts =>
     opts.EnableSensitiveDataLogging();
 });
 builder.Services.AddControllers();
+builder.Services.Configure<JsonOptions>(opts =>
+{
+    opts.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+});
 WebApplication app = builder.Build();
 app.MapControllers();
 app.MapGet("/", () => "Hello World!");
