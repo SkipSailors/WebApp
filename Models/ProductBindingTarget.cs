@@ -7,11 +7,11 @@ public class ProductBindingTarget
     public long CategoryId { get; set; }
     public long SupplierId { get; set; }
 
-    public Product ToProduct() => new Product()
-    {
-        Name = this.Name,
-        Price = this.Price,
-        CategoryId = this.CategoryId,
-        SupplierId = this.SupplierId
-    };
+    public Product ToProduct() => new()
+        {
+            Name = Name,
+            Price = Price,
+            CategoryId = CategoryId,
+            SupplierId = SupplierId
+        };
 }
