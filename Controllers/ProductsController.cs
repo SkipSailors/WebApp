@@ -27,7 +27,14 @@ public class ProductsController : ControllerBase
         Product? p = await context.Products.FindAsync(id);
         return p == null
             ? NotFound()
-            : Ok(p);
+            : Ok(new Product
+            {
+                ProductId = p.ProductId,
+                Name = p.Name,
+                Price = p.Price,
+                CategoryId = p.CategoryId,
+                SupplierId = p.SupplierId
+            });
     }
 
     [HttpPost]
