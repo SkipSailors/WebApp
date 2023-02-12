@@ -3,6 +3,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Models;
 
+[ApiController]
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
@@ -30,7 +31,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> SaveProduct([FromBody] ProductBindingTarget target)
+    public async Task<IActionResult> SaveProduct(ProductBindingTarget target)
     {
         Product p = target.ToProduct();
         await context.Products.AddAsync(p);
@@ -39,7 +40,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPut]
-    public async Task UpdateProduct([FromBody] Product product)
+    public async Task UpdateProduct(Product product)
     {
         context.Update(product);
         await context.SaveChangesAsync();
