@@ -14,6 +14,11 @@ builder.Services.Configure<MvcNewtonsoftJsonOptions>(opts =>
 {
     opts.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
 });
+builder.Services.Configure<MvcOptions>(opts =>
+{
+    opts.RespectBrowserAcceptHeader = true;
+    opts.ReturnHttpNotAcceptable = true;
+});
 WebApplication app = builder.Build();
 app.MapControllers();
 app.MapGet("/", () => "Hello World!");
