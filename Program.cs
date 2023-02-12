@@ -9,7 +9,7 @@ builder.Services.AddDbContext<DataContext>(opts =>
     opts.UseSqlServer(builder.Configuration["ConnectionStrings:ProductConnection"]);
     opts.EnableSensitiveDataLogging();
 });
-builder.Services.AddControllers().AddNewtonsoftJson();
+builder.Services.AddControllers().AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
 builder.Services.Configure<MvcNewtonsoftJsonOptions>(opts =>
 {
     opts.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
