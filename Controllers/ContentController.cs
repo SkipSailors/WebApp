@@ -20,7 +20,7 @@ public class ContentController : ControllerBase
 
     [HttpGet("object")]
     [FormatFilter]
-    [Produces("application/json, application/xml")]
+    [Produces("application/json", "application/xml")]
     public async Task<ProductBindingTarget> GetObject()
     {
         Product p = await context.Products.FirstAsync();
