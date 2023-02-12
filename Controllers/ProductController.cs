@@ -21,9 +21,9 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public Product? GetProduct([FromServices] ILogger<ProductController> logger)
+    public Product? GetProduct(long id, [FromServices] ILogger<ProductController> logger)
     {
         logger.LogDebug("GetProduct Action Invoked");
-        return context.Products.FirstOrDefault();
+        return context.Products.Find(id);
     }
 }
