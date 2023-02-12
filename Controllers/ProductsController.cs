@@ -51,4 +51,10 @@ public class ProductsController : ControllerBase
         context.Products.Remove(new Product { ProductId = id });
         await context.SaveChangesAsync();
     }
+
+    [HttpGet("redirect")]
+    public IActionResult Redirect()
+    {
+        return Redirect("/api/products/1");
+    }
 }
