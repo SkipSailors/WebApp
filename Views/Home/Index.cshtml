@@ -10,11 +10,13 @@
         <tbody>
         <tr>
             <th>Name</th>
-            <td>@Model?.Name</td>
+            <th>Price</th>
+            <th>Category ID</th>
         </tr>
         <tr>
-            <th>Price</th>
+            <td>@Model?.Name</td>
             <td>@Model?.Price.ToString("c")</td>
+            <th>@Model?.CategoryId</th>
         </tr>
         </tbody>
     </table>
