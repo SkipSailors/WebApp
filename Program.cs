@@ -8,8 +8,14 @@ builder.Services.AddDbContext<DataContext>(opts =>
     opts.EnableSensitiveDataLogging();
 });
 builder.Services.AddControllersWithViews();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.IsEssential = true;
+});
 WebApplication app = builder.Build();
 app.UseStaticFiles();
+app.UseSession();
 app.MapControllers();
 app.MapDefaultControllerRoute();
 DataContext context = app
