@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
 
@@ -13,6 +14,10 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
     options.Cookie.IsEssential = true;
+});
+builder.Services.Configure<RazorPagesOptions>(opts =>
+{
+    opts.Conventions.AddPageRoute("/Index", "extra/page/{d:long?");
 });
 WebApplication app = builder.Build();
 app.UseStaticFiles();
