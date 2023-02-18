@@ -9,23 +9,24 @@
     <div class="m-2">
         <table class="table table-sm table-striped table-bordered">
             <thead>
-                <tr>
-                    <th class="bg-primary text-white text-center" colspan="2">
-                        @RenderSection("Header")
-                    </th>
-                </tr>
+            <tr>
+                <th class="bg-primary text-white text-center" colspan="2">
+                        @RenderSection("Header", false)
+                </th>
+            </tr>
             </thead>
             <tbody>
-                @RenderBody()
+            @RenderBody()
             </tbody>
             <tfoot>
-                <tr>
-                    <th class="bg-primary text-white text-center" colspan="2">
-                        @RenderSection("Summary")
-                    </th>
-                </tr>
+            <tr>
+                <th class="bg-primary text-white text-center" colspan="2">
+                        @RenderSection("Footer", false)
+                </th>
+            </tr>
             </tfoot>
         </table>
     </div>
+    @RenderSection("Summary", false)
     </body>
 </html>
