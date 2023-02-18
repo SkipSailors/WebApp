@@ -8,6 +8,7 @@ builder.Services.AddDbContext<DataContext>(opts =>
     opts.EnableSensitiveDataLogging();
 });
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
@@ -18,6 +19,7 @@ app.UseStaticFiles();
 app.UseSession();
 app.MapControllers();
 app.MapDefaultControllerRoute();
+app.MapRazorPages();
 DataContext context = app
     .Services
     .CreateScope()
