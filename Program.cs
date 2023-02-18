@@ -17,7 +17,7 @@ builder.Services.AddSession(options =>
 });
 builder.Services.Configure<RazorPagesOptions>(opts =>
 {
-    opts.Conventions.AddPageRoute("/Index", "/extra/page/{d:long?");
+    opts.Conventions.AddPageRoute("/Index", "/extra/page/{d:long?}");
 });
 WebApplication app = builder.Build();
 app.UseStaticFiles();
