@@ -14,8 +14,10 @@ public class CitySummary : ViewComponent
         data = cdata;
     }
 
-    public IViewComponentResult Invoke()
+    public string Invoke()
     {
-        return new HtmlContentViewComponentResult(new HtmlString("This is a <h3><i>string</i></h3>"));
+        return RouteData.Values["controller"] != null
+            ? "Controller Request"
+            : "Razor Page Request";
     }
 }
