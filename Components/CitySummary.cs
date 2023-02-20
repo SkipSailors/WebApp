@@ -1,8 +1,6 @@
 ﻿namespace WebApp.Components;
 
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Models;
 
 public class CitySummary : ViewComponent
@@ -14,10 +12,13 @@ public class CitySummary : ViewComponent
         data = cdata;
     }
 
-    public string Invoke()
+    public IViewComponentResult Invoke(string themeName = "success")
     {
-        return RouteData.Values["controller"] != null
-            ? "Controller Request"
-            : "Razor Page Request";
+        ViewBag.Theme = themeName;
+        return View(new CityViewModel
+        {
+            Cities = data.Cities.Count(),
+            Population = data.Cities.Sum(c => c.Population)
+        });
     }
 }
