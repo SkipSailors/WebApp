@@ -1,6 +1,8 @@
 ﻿namespace WebApp.Components;
 
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Models;
 
 public class CitySummary : ViewComponent
@@ -14,9 +16,6 @@ public class CitySummary : ViewComponent
 
     public IViewComponentResult Invoke()
     {
-        return View(new CityViewModel
-        {
-            Cities = data.Cities.Count(), Population = data.Cities.Sum(c => c.Population)
-        });
+        return new HtmlContentViewComponentResult(new HtmlString("This is a <h3><i>string</i></h3>"));
     }
 }
