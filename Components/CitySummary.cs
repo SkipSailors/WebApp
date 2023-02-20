@@ -14,7 +14,9 @@ public class CitySummary : ViewComponent
 
     public string Invoke()
     {
-        return $"{data.Cities.Count()} cities, " +
-               $"{data.Cities.Sum(c => c.Population)}";
+        return View(new CityViewModel
+        {
+            Cities = data.Cities.Count(), Population = data.Cities.Sum(c => c.Population)
+        });
     }
 }
