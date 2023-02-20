@@ -12,7 +12,7 @@ public class CitySummary : ViewComponent
         data = cdata;
     }
 
-    public string Invoke()
+    public IViewComponentResult Invoke()
     {
         return View(new CityViewModel
         {
