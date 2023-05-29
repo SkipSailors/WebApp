@@ -5,7 +5,7 @@
     using Microsoft.AspNetCore.Razor.TagHelpers;
 
     [HtmlTargetElement("tr", Attributes = "for")]
-    public class RowTagHelper: TagHelper
+    public class ModelRowTagHelper: TagHelper
     {
         public string Format { get; set; } = string.Empty;
         public ModelExpression? For { get; set; }
