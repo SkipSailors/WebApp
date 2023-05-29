@@ -5,7 +5,7 @@
     using Microsoft.AspNetCore.Razor.TagHelpers;
 
     [HtmlTargetElement("tr", Attributes = "for")]
-    public class ModelRowTagHelper: TagHelper
+    public class RowTagHelper: TagHelper
     {
         public string Format { get; set; } = string.Empty;
         public ModelExpression? For { get; set; }
@@ -15,7 +15,7 @@
         {
             output.TagMode = TagMode.StartTagAndEndTag;
             TagBuilder th = new("th");
-            th.InnerHtml.Append(For?.Name ?? string.Empty);
+            th.InnerHtml.Append(For?.Name.Split(".").Last() ?? string.Empty);
             output.Content.AppendHtml(th);
             TagBuilder td = new("td");
             if (Format != null && For?.Metadata.ModelType == typeof(decimal))
