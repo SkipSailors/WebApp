@@ -15,8 +15,13 @@ public class TableHeadTagHelper : TagHelper
         output.TagMode = TagMode.StartTagAndEndTag;
         output.Attributes.SetAttribute("class", $"bg-{BgColor} text-white text-center");
         string content = (await output.GetChildContentAsync()).GetContent();
-        TagBuilder header = new("th");
-        header.Attributes["colspan"] = "2";
+        TagBuilder header = new("th")
+        {
+            Attributes =
+            {
+                ["colspan"] = "2"
+            }
+        };
         header.InnerHtml.Append(content);
         TagBuilder row = new("tr");
         row.InnerHtml.AppendHtml(header);
