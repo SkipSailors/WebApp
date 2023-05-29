@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 public class TrTagHelper : TagHelper
 {
-    public string BgColor { get; set; }
-    public string TextColor { get; set; }
+    public string BgColor { get; set; } = "dark";
+    public string TextColor { get; set; } = "white";
 
     /// <inheritdoc />
     public override void Process(TagHelperContext context, TagHelperOutput output)
