@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-[HtmlTargetElement("*", Attributes = "[highlight=true")]
+[HtmlTargetElement("*", Attributes = "[highlight=true]")]
 public class HighlightTagHelper : TagHelper
 {
     /// <inheritdoc />
