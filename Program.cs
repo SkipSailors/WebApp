@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc.RazorPages;
+// using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
 
@@ -10,19 +10,16 @@ builder.Services.AddDbContext<DataContext>(opts =>
 });
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-builder.Services.AddDistributedMemoryCache();
-builder.Services.AddSession(options =>
-{
-    options.Cookie.IsEssential = true;
-});
-builder.Services.Configure<RazorPagesOptions>(opts =>
-{
-    opts.Conventions.AddPageRoute("/Index", "/extra/page/{d:long?}");
-});
+// builder.Services.AddDistributedMemoryCache();
+// builder.Services.AddSession(options => { options.Cookie.IsEssential = true; });
+// builder.Services.Configure<RazorPagesOptions>(opts =>
+// {
+//     opts.Conventions.AddPageRoute("/Index", "/extra/page/{d:long?}");
+// });
 builder.Services.AddSingleton<CityData>();
 WebApplication app = builder.Build();
 app.UseStaticFiles();
-app.UseSession();
+// app.UseSession();
 app.MapControllers();
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
