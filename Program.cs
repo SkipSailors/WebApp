@@ -13,17 +13,10 @@ builder.Services.AddDbContext<DataContext>(opts =>
 });
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-// builder.Services.AddDistributedMemoryCache();
-// builder.Services.AddSession(options => { options.Cookie.IsEssential = true; });
-// builder.Services.Configure<RazorPagesOptions>(opts =>
-// {
-//     opts.Conventions.AddPageRoute("/Index", "/extra/page/{d:long?}");
-// });
 builder.Services.AddSingleton<CityData>();
 builder.Services.AddTransient<ITagHelperComponent, TimeTagHelperComponent>();
 WebApplication app = builder.Build();
 app.UseStaticFiles();
-// app.UseSession();
 app.MapControllers();
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
