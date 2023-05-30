@@ -1,6 +1,9 @@
 // using Microsoft.AspNetCore.Mvc.RazorPages;
+
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
+using WebApp.TagHelpers;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DataContext>(opts =>
@@ -17,6 +20,7 @@ builder.Services.AddRazorPages();
 //     opts.Conventions.AddPageRoute("/Index", "/extra/page/{d:long?}");
 // });
 builder.Services.AddSingleton<CityData>();
+builder.Services.AddTransient<ITagHelperComponent, TimeTagHelperComponent>();
 WebApplication app = builder.Build();
 app.UseStaticFiles();
 // app.UseSession();
