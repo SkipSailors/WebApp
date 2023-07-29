@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
-using WebApp.TagHelpers;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DataContext>(opts =>
