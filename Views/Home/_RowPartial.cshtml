@@ -1,6 +1,9 @@
 ﻿@model Product
 
 <tr>
-    <partial name="_CellPartiial" for="Name"/>
-    <td>@Model?.Price</td>
+    <td>@Model?.Name</td>
+    <td>@Model?.Price.ToString("c")</td>
+    <td>@Model?.Category</td>
+    <td>@Model?.Supplier</td>
+    <td></td>
 </tr>
